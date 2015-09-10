@@ -93,6 +93,12 @@ namespace SpecExpress.Rules
                 _propertyBag.Add(instanceType, new Dictionary<string, PropertyInfo>());
             }
             var propertyBag = _propertyBag[instanceType];
+
+            if (string.IsNullOrEmpty(validator.PropertyName))
+            {
+                return null;
+            }
+
             if (!propertyBag.ContainsKey(validator.PropertyName))
             {
                 propertyBag.Add(validator.PropertyName, instanceType.GetProperty(validator.PropertyName));
@@ -176,6 +182,12 @@ namespace SpecExpress.Rules
                 _propertyBag.Add(instanceType, new Dictionary<string, PropertyInfo>());
             }
             var propertyBag = _propertyBag[instanceType];
+
+            if (string.IsNullOrEmpty(validator.PropertyName))
+            {
+                return null;
+            }
+
             if (!propertyBag.ContainsKey(validator.PropertyName))
             {
                 propertyBag.Add(validator.PropertyName, instanceType.GetProperty(validator.PropertyName));
